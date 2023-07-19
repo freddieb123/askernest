@@ -38,7 +38,7 @@ def main():
     print(response.choices[0].message.content.strip())
     response_text = response.choices[0].message.content.strip()
     books = re.findall(r'\n\d\..*? \((.*?)\)', response_text)
-
+    print(books)
     return books
 
 if __name__ == "__main__":
