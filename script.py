@@ -32,9 +32,7 @@ def main():
         {"role": "user", "content": prompt}
       ]
     )
-    response_text = response.choices[0].message.content.strip()
-    print(response_text)
-    books = re.findall(r'\n\d\..*? \((.*?)\)', response_text)
+    books = response.choices[0].message.content.strip()
     print(books)
     return books
 

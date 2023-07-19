@@ -7,13 +7,13 @@
     <h1>Book Recommendations</h1>
     <table>
         <tr>
-            <th>#</th>
-            <th>Book</th>
+            <th>Title</th>
+            <th>Rationale</th>
         </tr>
-        {% for book in books %}
+        {% for title, rationale in books.items() %}
         <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ book }}</td>
+            <td>{{ title }}</td>
+            <td>{{ rationale }}</td>
         </tr>
         {% endfor %}
     </table>
