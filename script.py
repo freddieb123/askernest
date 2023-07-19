@@ -32,6 +32,8 @@ def main():
         {"role": "user", "content": prompt}
       ]
     )
+    print("response")
+    print(response)
     books = response.choices[0].message.content.strip()
     print(books)
     return books
