@@ -2,6 +2,8 @@ from flask import Flask, request, jsonify
 import script
 import threading
 import logging
+import pdb; pdb.set_trace()
+
 
 
 app = Flask(__name__)
@@ -22,4 +24,4 @@ def trigger_script():
     return jsonify({'message': message}), 200
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
