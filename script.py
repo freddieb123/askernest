@@ -34,7 +34,7 @@ def main():
     )
     print("response")
     print(response)
-    books = response.choices[0].message.content.strip()
+    books = response.choices[0].message.content()
     print(books)
     return books
 
