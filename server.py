@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import script
 import threading
 import logging
-import pdb; pdb.set_trace()
 
 
 
@@ -12,6 +11,7 @@ logging.basicConfig(level=logging.INFO)
 
 
 def run_script():
+    print('running')
     script.main()
 
 @app.route('/trigger_script', methods=['POST'])
