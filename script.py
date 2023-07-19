@@ -4,6 +4,8 @@ def main():
     from airtable import Airtable
     import openai
 
+    print('script started')
+
     # replace with your credentials
     base_key = 'app7bZnZImP7X9qDI'
     table_name = 'Draft'
