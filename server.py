@@ -5,6 +5,7 @@ import logging
 
 
 app = Flask(__name__)
+app.debug = True
 logging.basicConfig(level=logging.INFO)
 
 
