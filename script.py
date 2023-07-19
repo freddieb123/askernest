@@ -3,6 +3,8 @@ def main():
     import os
     from airtable import Airtable
     import openai
+    import re
+
 
     print('script started')
 
@@ -33,8 +35,11 @@ def main():
         {"role": "user", "content": prompt}
       ]
     )
-    print(response)
     print(response.choices[0].message.content.strip())
+    response_text = response.choices[0].message.content.strip()
+    books = re.findall(r'\n\d\..*? \((.*?)\)', response_text)
+
+    return books
 
 if __name__ == "__main__":
     main()

@@ -23,5 +23,12 @@ def trigger_script():
     app.logger.info(message)
     return jsonify({'message': message}), 200
 
+@app.route('/')
+def home():
+    # Get book recommendations
+    books = main()
+    # Pass recommendations to template
+    return render_template('index.html', books=books)
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Recommendations</title>
+</head>
+<body>
+    <h1>Book Recommendations</h1>
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Book</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ book }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
