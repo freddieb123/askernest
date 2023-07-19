@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 
 def run_script():
     print('running')
-    script.main()
+    g.books = script.main()
 
 @app.route('/trigger_script', methods=['POST'])
 def trigger_script():
@@ -25,8 +25,10 @@ def trigger_script():
 
 @app.route('/')
 def home():
-    # Get book recommendations
-    books = main()
+    # Check if book recommendations are available
+    books = getattr(g, 'books', None)
+    if books is None:
+        return "No book recommendations available. Try again later."
     # Pass recommendations to template
     return render_template('index.html', books=books)
 
