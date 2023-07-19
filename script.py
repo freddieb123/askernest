@@ -1,16 +1,17 @@
-import os
-from airtable import Airtable
-import openai
-
-# replace with your credentials
-base_key = 'app7bZnZImP7X9qDI'
-table_name = 'Draft'
-api_key = 'keyTTV2pwUhoGhicb'
-
-# initialize Airtable
-airtable = Airtable(base_key, table_name, api_key)
 
 def main():
+    import os
+    from airtable import Airtable
+    import openai
+
+    # replace with your credentials
+    base_key = 'app7bZnZImP7X9qDI'
+    table_name = 'Draft'
+    api_key = 'keyTTV2pwUhoGhicb'
+
+    # initialize Airtable
+    airtable = Airtable(base_key, table_name, api_key)
+
     # Get the latest record
     records = airtable.get_all(maxRecords=1)
     latest_record = records[0]['fields']
