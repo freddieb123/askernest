@@ -16,4 +16,4 @@ def trigger_script():
     return jsonify({'message': 'Script is being run in another thread'}), 200
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run()
