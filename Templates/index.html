@@ -22,10 +22,11 @@
           fetch('/')
               .then(function(response) {
                   if (response.status === 200) {
+                      console.log("Message arrived");
                       location.reload();
                   }
               });
-      }, 5000); // Check every 5 seconds
+      }, 1000); // Check every 1 second
   </script>
 </body>
 </html>
