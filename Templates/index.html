@@ -17,5 +17,15 @@
         </tr>
         {% endfor %}
     </table>
+    <script>
+      setInterval(function() {
+          fetch('/')
+              .then(function(response) {
+                  if (response.status === 200) {
+                      location.reload();
+                  }
+              });
+      }, 5000); // Check every 5 seconds
+  </script>
 </body>
 </html>

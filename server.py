@@ -29,11 +29,10 @@ def trigger_script():
 def home():
     # Check if book recommendations are available
     books = getattr(g, 'books', None)
-    print("second")
     if books is None:
-        return "No book recommendations available. Try again later."
+        return "No book recommendations available. Try again later.", 202
     # Pass recommendations to template
-    return render_template('index.html', books=books)
+    return render_template('index.html', books=books), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
