@@ -24,7 +24,7 @@ def trigger_script():
 @app.route('/', methods=['POST'])
 def home():
     # Check if book recommendations are available
-    books = getattr(g, 'books', None)
+    books = results()
     print(books)
     if books is None:
         return "No book recommendations available. Try again later.", 202
