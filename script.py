@@ -19,7 +19,7 @@ def main():
     latest_record = records[0]['fields']
 
     # construct the prompt
-    prompt = f"This description is about my {latest_record['Relationship']}: they grew up in {latest_record['Location']}. They describe themselves in 3 words as {latest_record['Three words']}. Their main interests are {latest_record['What are their main interests?']}. A typical meeting between us looks like {latest_record['Typical meeting']}. And I would describe the conversation as {latest_record['Conversation']}. \n\nFinally, they like {latest_record['Fiction/Non-fiction']} books. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious. Provide the response as a Python dictionary with key value pairs being Book title and Author respectively. For example 'The Lord of the Rings':'J.R.R. Tolkien' as a key value pair."
+    prompt = f"This description is about my {latest_record['Relationship']}: they grew up in {latest_record['Location']}. They describe themselves in 3 words as {latest_record['Three words']}. Their main interests are {latest_record['What are their main interests?']}. A typical meeting between us looks like {latest_record['Typical meeting']}. And I would describe the conversation as {latest_record['Conversation']}. \n\nFinally, they like {latest_record['Fiction/Non-fiction']} books. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious. Provide the response as a Python dictionary with key value pairs being Book title and Author respectively. For example \"The Lord of the Rings":"J.R.R. Tolkien\" as a key value pair."
 
     # Set your OpenAI key
     openai.api_key = os.environ['OPENAI_KEY']
@@ -33,6 +33,7 @@ def main():
       ]
     )
     books = response.choices[0].message.content.strip()
+    print(books)
 
     # Initialize Airtable for 'Recommendations' table
     recommendations_table = Airtable(base_key, 'Recommendations', api_key)
