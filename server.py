@@ -21,7 +21,7 @@ def trigger_script():
     app.logger.info(message)
     return jsonify({'message': message}), 200
 
-@app.route('/')
+@app.route('/', methods=['POST'])
 def home():
     # Check if book recommendations are available
     books = getattr(g, 'books', None)
