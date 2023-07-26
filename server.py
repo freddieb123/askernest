@@ -13,7 +13,8 @@ logging.basicConfig(level=logging.INFO)
 def run_script():
     with app.app_context():
         g.books = script.main()
-
+        print(g.books)
+        print(g.books)
 
 @app.route('/trigger_script', methods=['POST'])
 def trigger_script():
