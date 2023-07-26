@@ -18,18 +18,21 @@
         {% endfor %}
     </table> <!-- text -->
     <script>
-  setTimeout(function() {
-      fetch('/')
-          .then(function(response) {
-              if (response.status === 200) {
-                  console.log("Message arrived");
-                  location.reload();
-              }
-          })
-          .catch(function(error) {
-            console.log('Error:', error);
-          });
-      }, 1000); // Check every 1 second
+    if (!localStorage.getItem('reloaded')) {
+        setTimeout(function() {
+            fetch('/')
+                .then(function(response) {
+                    if (response.status === 200) {
+                        console.log("Message arrived");
+                        localStorage.setItem('reloaded', 'true');
+                        location.reload();
+                    }
+                })
+                .catch(function(error) {
+                  console.log('Error:', error);
+                });
+        }, 1000); // Check every 1 second
+    }
     </script>
 </body>
 </html>
