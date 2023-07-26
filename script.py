@@ -7,9 +7,9 @@ def main():
 
 
     # replace with your credentials
-    base_key = 'app7bZnZImP7X9qDI'
+    base_key = os.environ['BASE_KEY']
     table_name = 'Draft'
-    api_key = 'keyTTV2pwUhoGhicb'
+    api_key = os.environ['API_KEY']
 
     # initialize Airtable
     airtable = Airtable(base_key, table_name, api_key)
@@ -22,7 +22,7 @@ def main():
     prompt = f"This description is about my {latest_record['Relationship']}: they grew up in {latest_record['Location']}. They describe themselves in 3 words as {latest_record['Three words']}. Their main interests are {latest_record['What are their main interests?']}. A typical meeting between us looks like {latest_record['Typical meeting']}. And I would describe the conversation as {latest_record['Conversation']}. \n\nFinally, they like {latest_record['Fiction/Non-fiction']} books. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious. Provide the response as a Python dictionary with key value pairs being Book title and Explanation respectively."
 
     # Set your OpenAI key
-    openai.api_key = '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'
+    openai.api_key = os.environ['OPENAI_KEY']
 
     # Generate response from the model
     response = openai.ChatCompletion.create(
@@ -34,7 +34,7 @@ def main():
     )
     print("response")
     print(response)
-    books = response.choices[0].message.content.strip()
+    books = response.choices[0].message.content()
     print(books)
     return books
 
