@@ -18,7 +18,8 @@ def results():
     records = airtable.get_all(maxRecords=1, sort=[('created_time', 'desc')])
     latest_record = records[0]['fields']
 
-    print(type(latest_record))
+    print((latest_record.Books))
+    print(type(latest_record.Books))
     return latest_record
 
 if __name__ == "__main__":

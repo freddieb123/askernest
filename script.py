@@ -40,7 +40,7 @@ def main():
     # Insert books into 'Recommendations' table
     recommendations_table.insert({'Books': books})
 
-    return books.Books
+    return books
 
 if __name__ == "__main__":
     main()
