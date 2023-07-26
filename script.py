@@ -32,8 +32,14 @@ def main():
         {"role": "user", "content": prompt}
       ]
     )
-    print("response")
     books = response.choices[0].message.content.strip()
+
+    # Initialize Airtable for 'Recommendations' table
+    recommendations_table = Airtable(base_key, 'Recommendations', api_key)
+
+    # Insert books into 'Recommendations' table
+    recommendations_table.insert({'Books': books})
+
     print(books)
     return books
 
