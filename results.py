@@ -22,7 +22,7 @@ def results():
     booklist_str = next(iter(latest_record.values()))
     booklist_dict = json.loads(booklist_str)
     print(booklist_dict)
-    return latest_record
+    return booklist_dict
 
 if __name__ == "__main__":
     results()
