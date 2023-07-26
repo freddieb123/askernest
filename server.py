@@ -37,6 +37,8 @@ def home():
     # Add headers to prevent caching
     response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     response.headers['Pragma'] = 'no-cache'
+    return response
+
     # Pass recommendations to template
     #return render_template('index.html', books=books), 200
 
