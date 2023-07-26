@@ -4,6 +4,7 @@ def results():
     from airtable import Airtable
     import openai
     import re
+    import json
 
 
     # replace with your credentials
@@ -18,8 +19,9 @@ def results():
     records = airtable.get_all(maxRecords=1, sort=[('created_time', 'desc')])
     latest_record = records[0]['fields']
 
-    print(next(iter(latest_record.values())))
-    print(type(next(iter(latest_record.values()))))
+    booklist_str = next(iter(latest_record.values()))
+    booklist_dict = json.loads(booklist_str)
+    print(booklist_dict)
     return latest_record
 
 if __name__ == "__main__":
