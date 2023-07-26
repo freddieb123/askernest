@@ -3,8 +3,6 @@ import script
 import threading
 import logging
 
-
-
 app = Flask(__name__)
 app.debug = True
 logging.basicConfig(level=logging.INFO)
@@ -13,8 +11,6 @@ logging.basicConfig(level=logging.INFO)
 def run_script():
     with app.app_context():
         g.books = script.main()
-        print(g.books)
-        print(g.books)
 
 @app.route('/trigger_script', methods=['POST'])
 def trigger_script():
@@ -29,6 +25,7 @@ def trigger_script():
 def home():
     # Check if book recommendations are available
     books = getattr(g, 'books', None)
+    print(books)
     if books is None:
         return "No book recommendations available. Try again later.", 202
     else:
