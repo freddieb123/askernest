@@ -19,7 +19,7 @@ def results():
     latest_record = records[0]['fields']
 
     print(next(iter(latest_record.values())))
-    print(type(next(iter(latest_record.values())))
+    print(type(next(iter(latest_record.values()))))
     return latest_record
 
 if __name__ == "__main__":
