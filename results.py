@@ -20,7 +20,7 @@ def results():
     latest_record = records[0]['fields']
     print(latest_record)
     booklist_str = next(iter(latest_record.values()))
-    books_str = books_str.replace("'", '"')
+    booklist_str = booklist_str.replace("'", '"')
     booklist_dict = json.loads(booklist_str)
     print(booklist_dict)
     return booklist_dict
