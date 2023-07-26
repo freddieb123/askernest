@@ -21,7 +21,10 @@ def results():
     print("raw")
     print(latest_record)
     booklist_str = next(iter(latest_record.values()))
+    print(booklist_str)
     booklist_str = booklist_str.replace("'", '"')
+    print(booklist_str)
+
     booklist_dict = json.loads(booklist_str)
     print("dict")
     print(booklist_dict)
