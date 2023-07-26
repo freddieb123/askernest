@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, g, render_template
+from flask import Flask, request, jsonify, g, render_template, make_response
 import script
 import threading
 import logging
@@ -31,8 +31,14 @@ def home():
     books = getattr(g, 'books', None)
     if books is None:
         return "No book recommendations available. Try again later.", 202
+    else:
+        response = make_response(render_template('index.html', books=books), 200)
+
+    # Add headers to prevent caching
+    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
     # Pass recommendations to template
-    return render_template('index.html', books=books), 200
+    #return render_template('index.html', books=books), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
