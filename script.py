@@ -19,7 +19,7 @@ def main():
     latest_record = records[0]['fields']
 
     # construct the prompt
-    prompt = "This description is about my {}: they grew up in {}. They describe themselves in 3 words as {}. Their main interests are {}. A typical meeting between us looks like {}. And I would describe the conversation as {}. \n\nFinally, they like {} books. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious. Provide the response as a Python dictionary with key value pairs being Book title and Author respectively. For example 'The Lord of the Rings':'J.R.R. Tolkien' as a key value pair.".format(
+    prompt = "This description is about my {}: they grew up in {}. They describe themselves in 3 words as {}. Their main interests are {}. A typical meeting between us looks like {}. And I would describe the conversation as {}. \n\nFinally, they like {} books. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the author's name as the value. For example: {\"To Kill a Mockingbird\": \"Harper Lee\", \"1984\": \"George Orwell\"}.".format(
     latest_record['Relationship'],
     latest_record['Location'],
     latest_record['Three words'],
@@ -40,7 +40,6 @@ def main():
       ]
     )
     books = response.choices[0].message.content.strip()
-    print(books)
 
     # Initialize Airtable for 'Recommendations' table
     recommendations_table = Airtable(base_key, 'Recommendations', api_key)
