@@ -19,7 +19,7 @@ def results():
     records = airtable.get_all(maxRecords=1, sort=[('created_time', 'desc')])
     latest_record = records[0]['fields']
     print(latest_record)
-    booklist_str = next(iter(latest_record.values()))
+    booklist_dict = next(iter(latest_record.values()))
     #booklist_dict = json.loads(booklist_str)
     print(booklist_dict)
     return booklist_dict
