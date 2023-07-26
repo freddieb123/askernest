@@ -46,7 +46,7 @@ def main():
     recommendations_table = Airtable(base_key, 'Recommendations', api_key)
 
     # Insert books into 'Recommendations' table
-    recommendations_table.insert({'Books': books})
+    recommendations_table.insert(books)
 
     return books
 
