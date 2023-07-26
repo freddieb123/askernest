@@ -4,7 +4,7 @@ import threading
 import logging
 import results
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='path/to/your/Templates')
 app.debug = True
 logging.basicConfig(level=logging.INFO)
 
