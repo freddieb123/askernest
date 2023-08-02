@@ -14,7 +14,6 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
                 },
                 body: JSON.stringify(formData)
             })
-            console.log("started")
             .then(response => {
                 if (response.ok) {
                     alert("Form data submitted successfully!");
