@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, g, render_template, make_response
+from flask import Flask, request, jsonify, g, render_template, make_response, redirect
 import script
 import threading
 import logging
@@ -13,14 +13,18 @@ def run_script():
     with app.app_context():
         g.books = script.main()
 
-@app.route('/trigger_script', methods=['POST'])
-def trigger_script():
-    # Call your script here
-    thread = threading.Thread(target=run_script)
-    thread.start()
-    message = 'Script is being run in another thread'
-    app.logger.info(message)
-    return jsonify({'message': message}), 200
+@app.route("/submitFormData", methods=["POST"])
+def handle_form_submission():
+    data = request.json
+    name = data["name"]
+    age = data["age"]
+    location = data["location"]
+    interests = data["interests"]
+
+    if submit_form_data(name, age, location, interests):
+        return jsonify({"message": "Data inserted successfully"}), 200
+    else:
+        return jsonify({"message": "Error inserting data into Airtable"}), 500
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -28,7 +32,7 @@ def home():
     books = results.results()
     print(books)
     if books is None:
-        return "No book recommendations available. Try again later.", 202
+        return render_template('index.html')
     else:
         response = make_response(render_template('index.html', books=books), 200)
 

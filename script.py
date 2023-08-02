@@ -8,7 +8,7 @@ def main():
 
     # replace with your credentials
     base_key = os.environ['BASE_KEY']
-    table_name = 'Draft'
+    table_name = 'Draft2'
     api_key = os.environ['API_KEY']
 
     # initialize Airtable

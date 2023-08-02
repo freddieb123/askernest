@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book Recommendations</title>
+    <title>User Information Form</title>
 </head>
 <body>
-    <h1>Book Recommendations</h1>
-    <table>
-        <tr>
-            <th>Title</th>
-            <th>Rationale</th>
-        </tr>
-        {% for title, rationale in books.items() %}
-        <tr>
-            <td>{{ title }}</td>
-            <td>{{ rationale }}</td>
-        </tr>
-        {% endfor %}
-    </table> <!-- text -->
-    <script>
-    if (!localStorage.getItem('reloaded')) {
-        setTimeout(function() {
-            fetch('/')
-                .then(function(response) {
-                    if (response.status === 200) {
-                        console.log("Message arrived");
-                        localStorage.setItem('reloaded', 'true');
-                        location.reload();
-                    }
-                })
-                .catch(function(error) {
-                  console.log('Error:', error);
-                });
-        }, 1000); // Check every 1 second
-    }
-    </script>
+    <h1>User Information Form</h1>
+    <form id="userForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+
+        <label for="age">Age:</label>
+        <select id="age" multiple required>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <!-- Add more options as needed -->
+        </select><br>
+
+        <label for="location">Location:</label>
+        <input type="text" id="location" required><br>
+
+        <label for="interests">Interests:</label>
+        <input type="text" id="interests" required><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="app.js"></script>
 </body>
 </html>
