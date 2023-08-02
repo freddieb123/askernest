@@ -54,4 +54,10 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
               titleCell.innerText = title;
               authorCell.innerText = author;
               }
+          // Show the book recommendations section and hide the user info form section
+          const bookRecommendationsSection = document.getElementById("bookRecommendations");
+          const userInfoFormSection = document.getElementById("userForm");
+          bookRecommendationsSection.style.display = "block";
+          userInfoFormSection.style.display = "none";
+
           }

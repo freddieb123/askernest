@@ -1,10 +1,23 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Book Recommendations</title>
-</head>
 <body>
+  <form id="userForm">
+      <h1>User Information Form</h1>
+      <form id="userForm">
+          <label for="name">Name:</label>
+          <input type="text" id="name" required><br>
+
+          <label for="age">Age:</label>
+          <input type="text" id="age" required><br>
+
+          <label for="location">Location:</label>
+          <input type="text" id="location" required><br>
+
+          <label for="interests">Interests:</label>
+          <input type="text" id="interests" required><br>
+      <button type="submit">Submit</button>
+  </form>
     <h1>Book Recommendations</h1>
     <table id="bookTable">
         <tr>
@@ -13,22 +26,7 @@
         </tr>
     </table>
 
-    <form id="userForm">
-        <h1>User Information Form</h1>
-        <form id="userForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" required><br>
 
-            <label for="age">Age:</label>
-            <input type="text" id="age" required><br>
-
-            <label for="location">Location:</label>
-            <input type="text" id="location" required><br>
-
-            <label for="interests">Interests:</label>
-            <input type="text" id="interests" required><br>
-        <button type="submit">Submit</button>
-    </form>
 
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
