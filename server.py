@@ -21,11 +21,12 @@ def handle_form_submission():
     data = request.json
     name = data["name"]
     age = data["age"]
+    grewup= data["grewup"]
     location = data["location"]
     interests = data["interests"]
     print (data)
 
-    if submit_form_data(name, age, location, interests):
+    if submit_form_data(name, age, grewup, location, interests, relationship):
         books = run_script()
         g.books = books  # Set the books variable in the g context
         return jsonify({"message": "Data inserted successfully", "books": books}), 200
