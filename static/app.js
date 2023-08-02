@@ -3,7 +3,7 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
             event.preventDefault();
             const formData = {
                 name: document.getElementById("name").value,
-                age: Array.from(document.getElementById("age").selectedOptions, option => option.value),
+                age: document.getElementById("age").value,
                 location: document.getElementById("location").value,
                 interests: document.getElementById("interests").value,
             };
