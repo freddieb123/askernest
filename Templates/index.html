@@ -17,18 +17,15 @@
           <input type="text" id="interests" required><br>
       <button type="submit">Submit</button>
     </div>
-  <div id="bookRecommendations" style="display: none;">
-    <h1>Book Recommendations</h1>
-    <table id="bookTable">
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-        </tr>
-    </table>
-  </div>
-
-
-
+    <div id="bookRecommendations" style="display: none;">
+      <h1>Book Recommendations</h1>
+      <table id="bookTable">
+          <tr>
+              <th>Title</th>
+              <th>Author</th>
+          </tr>
+      </table>
+    </div>
 
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
