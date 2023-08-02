@@ -29,7 +29,7 @@ def handle_form_submission():
 @app.route('/', methods=['GET', 'POST'])
 def home():
     # Check if book recommendations are available
-    books = results.results()
+    #books = results.results()
     print(books)
     if books is None:
         return render_template('index.html')
