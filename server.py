@@ -30,7 +30,7 @@ def handle_form_submission():
 def home():
     # Check if book recommendations are available
     #books = results.results()
-    print(books)
+    #print(books)
     if books is None:
         return render_template('index.html')
     else:
