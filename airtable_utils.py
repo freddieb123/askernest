@@ -2,7 +2,6 @@
 import requests
 import os
 
-
 # Replace these with your actual Airtable API key and base ID
 AIRTABLE_API_KEY = os.environ['API_KEY']
 AIRTABLE_BASE_ID = os.environ['BASE_KEY']

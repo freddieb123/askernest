@@ -17,11 +17,13 @@ def run_script():
 
 @app.route("/submitFormData", methods=["POST"])
 def handle_form_submission():
+    print('route started1')
     data = request.json
     name = data["name"]
     age = data["age"]
     location = data["location"]
     interests = data["interests"]
+    print('route started')
 
     if submit_form_data(name, age, location, interests):
         return jsonify({"message": "Data inserted successfully"}), 200

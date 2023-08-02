@@ -13,6 +13,7 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(formData)
+                console.log("started")
             })
             .then(response => {
                 if (response.ok) {
