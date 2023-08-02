@@ -19,6 +19,7 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
                 if (data.message === "Data inserted successfully") {
                     // Update the page content dynamically with the new data
                     console.log(data.books)
+                    console.log(typeof data.books)
                     updatePageContent(data.books);
                     alert("Form data submitted successfully!");
                 } else {
@@ -35,7 +36,7 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
         function updatePageContent(books) {
           // Get the table element
           const table = document.getElementById("bookTable");
-
+          console.log(books)
           // Clear existing rows (except the header)
           while (table.rows.length > 1) {
             table.deleteRow(1);
