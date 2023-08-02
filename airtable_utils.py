@@ -9,7 +9,7 @@ AIRTABLE_API_KEY = os.environ['API_KEY']
 AIRTABLE_BASE_ID = os.environ['BASE_KEY']
 AIRTABLE_TABLE_NAME = 'Draft2'
 
-def submit_form_data(name, age, location, interests):
+def submit_form_data(name, age, location, grewup, interests, relationship):
      # Initialize Airtable for the desired table
     table = Airtable(AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME, api_key=AIRTABLE_API_KEY)
 
@@ -19,7 +19,9 @@ def submit_form_data(name, age, location, interests):
             "Name": name,
             "Age": age,
             "Location": location,
-            "Interests": interests
+            "Grewup": grewup,
+            "Interests": interests,
+            "Relationship": relationship
         })
 
         return True
