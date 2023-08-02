@@ -19,14 +19,10 @@ def main():
     latest_record = records[0]['fields']
 
     # construct the prompt
-    prompt = "This description is about my {}: they grew up in {}. They describe themselves in 3 words as {}. Their main interests are {}. A typical meeting between us looks like {}. And I would describe the conversation as {}. \n\nFinally, they like {} books. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the author's name as the value. For example: {{\"To Kill a Mockingbird\": \"Harper Lee\", \"1984\": \"George Orwell\"}}. Remove any other text apart from the dictionary.".format(
-    latest_record['Relationship'],
+    prompt = "My uncle grew up in {}. They are {} years old. And their interests are {}. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the author's name as the value. For example: {{\"To Kill a Mockingbird\": \"Harper Lee\", \"1984\": \"George Orwell\"}}. Remove any other text apart from the dictionary.".format(
     latest_record['Location'],
-    latest_record['Three words'],
-    latest_record['What are their main interests?'],
-    latest_record['Typical meeting'],
-    latest_record['Conversation'],
-    latest_record['Fiction/Non-fiction']
+    latest_record['Age'],
+    latest_record['Interests']
     )
     # Set your OpenAI key
     openai.api_key = os.environ['OPENAI_KEY']
