@@ -16,7 +16,7 @@ def run_script():
         g.books = script.main()
 
 @app.route("/submitFormData", methods=["POST"])
-def handle_form_submission():
+def submit_form_data():
     data = request.json
     name = data["name"]
     age = data["age"]
