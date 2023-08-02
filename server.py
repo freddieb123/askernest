@@ -3,6 +3,8 @@ import script
 import threading
 import logging
 import results
+from airtable_utils import submit_form_data
+
 
 app = Flask(__name__, template_folder='Templates')
 app.debug = True
