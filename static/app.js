@@ -38,7 +38,7 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
           const table = document.getElementById("bookTable");
           const booksobject = JSON.parse(books);
           console.log(books)
-          console.log(typeof data.books)
+          console.log(typeof books)
 
 
           // Clear existing rows (except the header)
