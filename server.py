@@ -31,18 +31,11 @@ def home():
     # Check if book recommendations are available
     #books = results.results()
     #print(books)
-    if books is None:
+    #if books is None:
         return render_template('index.html')
-    else:
-        response = make_response(render_template('index.html', books=books), 200)
+    #else:
+        #response = make_response(render_template('index.html', books=books), 200)
 
-    # Add headers to prevent caching
-    response.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate'
-    response.headers['Pragma'] = 'no-cache'
-    return response
-
-    # Pass recommendations to template
-    #return render_template('index.html', books=books), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
