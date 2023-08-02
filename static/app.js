@@ -1,5 +1,5 @@
 // app.js
-document.getElementById("userForm").addEventListener("submit", function (event) {
+document.getElementById("submitBtn").addEventListener("click", function (event) {
             event.preventDefault();
             const formData = {
                 name: document.getElementById("name").value,
