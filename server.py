@@ -24,6 +24,7 @@ def handle_form_submission():
     interests = data["interests"]
 
     if submit_form_data(name, age, location, interests):
+        run_script()
         return jsonify({"message": "Data inserted successfully"}), 200
     else:
         return jsonify({"message": "Error inserting data into Airtable"}), 500
