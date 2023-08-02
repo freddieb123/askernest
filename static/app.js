@@ -36,7 +36,7 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
         function updatePageContent(books) {
           // Get the table element
           const table = document.getElementById("bookTable");
-          const books = JSON.parse(books);
+          const booksobject = JSON.parse(books);
           console.log(books)
           console.log(typeof data.books)
 
@@ -47,7 +47,7 @@ document.getElementById("userForm").addEventListener("submit", function (event) 
           }
 
           // Create and append new rows for each book
-          for (const [title, author] of Object.entries(books)) {
+          for (const [title, author] of Object.entries(booksobject)) {
               const newRow = table.insertRow();
               const titleCell = newRow.insertCell();
               const authorCell = newRow.insertCell();
