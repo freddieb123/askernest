@@ -23,7 +23,7 @@ def handle_form_submission():
     age = data["age"]
     location = data["location"]
     interests = data["interests"]
-    print data
+    print (data)
 
     if submit_form_data(name, age, location, interests):
         books = run_script()
