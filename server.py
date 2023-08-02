@@ -24,6 +24,7 @@ def handle_form_submission():
     grewup= data["grewup"]
     location = data["location"]
     interests = data["interests"]
+    relationship = data["relationship"]
     print (data)
 
     if submit_form_data(name, age, grewup, location, interests, relationship):
