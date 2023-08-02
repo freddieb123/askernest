@@ -4,6 +4,8 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
             const formData = {
                 name: document.getElementById("name").value,
                 age: document.getElementById("age").value,
+                grewup: document.getElementById("grewup").value,
+                relationship: document.getElementById("relationship").value,
                 location: document.getElementById("location").value,
                 interests: document.getElementById("interests").value,
             };
