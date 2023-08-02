@@ -12,6 +12,7 @@ AIRTABLE_TABLE_NAME = 'Draft2'
 def submit_form_data(name, age, location, interests):
      # Initialize Airtable for the desired table
     table = Airtable(AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME, api_key=AIRTABLE_API_KEY)
+    age = int(age)
 
     # Insert the form data into the Airtable table
     try:
