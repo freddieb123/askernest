@@ -12,9 +12,9 @@ logging.basicConfig(level=logging.INFO)
 
 
 def run_script():
-    with app.app_context():
-        g.books = script.main()
-    return g.books
+    #with app.app_context():
+    books = script.main()
+    return books
 
 @app.route("/submitFormData", methods=["POST"])
 def handle_form_submission():
@@ -27,7 +27,7 @@ def handle_form_submission():
     if submit_form_data(name, age, location, interests):
         books = run_script()
         g.books = books  # Set the books variable in the g context
-        return jsonify({"message": "Data inserted successfully", "books": g.books}), 200
+        return jsonify({"message": "Data inserted successfully", "books": books}), 200
     else:
         return jsonify({"message": "Error inserting data into Airtable"}), 500
 
