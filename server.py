@@ -37,19 +37,9 @@ def home():
     # Initialize books to None
     books = None
     print(books)
-    if books is None:
-        return render_template('index.html')
-    else:
-        # Redirect to the new page with books data as a query parameter
-        return redirect(url_for('display_books', books=books))
+    return render_template('index.html')
 
-@app.route('/display_books')
-def display_books():
-    # Retrieve the books data from the query parameter
-    books = request.args.get('books')
 
-    # Render the template with the books data
-    return render_template('books_table.html', books=books)
 
 
 if __name__ == '__main__':
