@@ -8,7 +8,7 @@ def main():
 
     # replace with your credentials
     base_key = os.environ['BASE_KEY']
-    table_name = 'Draft2'
+    table_name = 'Draft'
     api_key = os.environ['API_KEY']
 
     # initialize Airtable
@@ -19,14 +19,15 @@ def main():
     latest_record = records[0]['fields']
 
     # construct the prompt
-    prompt = "My uncle lives in {}. And grew up in {}. He is {} years old. And his interests are {}. And for context I would describe our relationship as {}. \n\nRecommend me 5 books based on this description that I could give him. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the author's name as the value. For example: {{\"To Kill a Mockingbird\": \"Harper Lee\", \"1984\": \"George Orwell\"}}. Remove any other text apart from the dictionary.".format(
+    prompt = "This description is about my {}: they grew up in {}. They describe themselves in 3 words as {}. Their main interests are {}. A typical meeting between us looks like {}. And I would describe the conversation as {}. \n\nFinally, they like {} books. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the ISBN number as the value. For example: {{\"The Shadow of the Wind\": \"9780143034902\", \"The Color of Magic\": \"9780062225672\"}}. Remove any other text apart from the dictionary.".format(
+    latest_record['Relationship'],
     latest_record['Location'],
-    latest_record['Grewup'],
-    latest_record['Age'],
-    latest_record['Interests'],
-    latest_record['Relationship']
+    latest_record['Three words'],
+    latest_record['What are their main interests?'],
+    latest_record['Typical meeting'],
+    latest_record['Conversation'],
+    latest_record['Fiction/Non-fiction']
     )
-    print(prompt)
     # Set your OpenAI key
     openai.api_key = os.environ['OPENAI_KEY']
 
