@@ -45,7 +45,7 @@ def main():
     latest_record = records[0]['fields']
 
     # construct the prompt
-    prompt = "This description is about my {}: they grew up in {}. They describe themselves in 3 words as {}. Their main interests are {}. A typical meeting between us looks like {}. And I would describe the conversation as {}. \n\nFinally, they like {} books. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the ISBN number as the value. For example: {{\"The Shadow of the Wind\": \"9780143034902\", \"The Color of Magic\": \"9780062225672\"}}. Remove any other text apart from the dictionary.".format(
+    prompt = "This description is about my {}: they grew up in {}. They describe themselves in 3 words as {}. Their main interests are {}. A typical meeting between us looks like {}. And I would describe the conversation as {}. \n\nFinally, they like {} books. \n\nRecommend me 5 books based on this description. Make sure the recommendations aren't really obvious and you can choose from any books that's likely to be available on Amazon. Please provide your recommendations as a Python dictionary, with the book title as the key and the ISBN number as the value. For example: {{\"The Shadow of the Wind\": \"9780143034902\", \"The Color of Magic\": \"9780062225672\"}}. Remove any other text apart from the dictionary.".format(
     latest_record['Relationship'],
     latest_record['Location'],
     latest_record['Three words'],
