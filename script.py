@@ -18,7 +18,7 @@ def get_book_info_from_isbn(isbn_dict):
 
     for title, isbn in isbn_dict.items():
         # Send request to Google Books API
-        url = f"https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}"
+        url = f"https://www.googleapis.com/books/v1/volumes?q=intitle:{title}"
         response = requests.get(url)
         data = response.json()
 

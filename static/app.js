@@ -50,7 +50,7 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
           }
 
           // Create and append new rows for each book
-          for (const [title, { author, thumbnail }] of Object.entries(books)) {
+          for (const [title, { authors, thumbnail }] of Object.entries(books)) {
             const newRow = table.insertRow();
             const thumbnailCell = newRow.insertCell();
             const titleCell = newRow.insertCell();
@@ -62,7 +62,7 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
             thumbnailCell.appendChild(thumbnailImage);
 
             titleCell.innerText = title;
-            authorCell.innerText = author;
+            authorCell.innerText = authors;
           }
 
 
