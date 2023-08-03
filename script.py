@@ -54,6 +54,7 @@ def main():
     latest_record['Conversation'],
     latest_record['Fiction/Non-fiction']
     )
+    print(prompt)
     # Set your OpenAI key
     openai.api_key = os.environ['OPENAI_KEY']
 
