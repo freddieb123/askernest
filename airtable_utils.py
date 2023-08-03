@@ -9,7 +9,7 @@ AIRTABLE_API_KEY = os.environ['API_KEY']
 AIRTABLE_BASE_ID = os.environ['BASE_KEY']
 AIRTABLE_TABLE_NAME = 'Draft2'
 
-def submit_form_data(name, age, location, grewup, interests, relationship):
+def submit_form_data(name, relation, age, location, grewup, interests, relationship):
      # Initialize Airtable for the desired table
     table = Airtable(AIRTABLE_BASE_ID, AIRTABLE_TABLE_NAME, api_key=AIRTABLE_API_KEY)
 
@@ -17,6 +17,7 @@ def submit_form_data(name, age, location, grewup, interests, relationship):
     try:
         table.insert({
             "Name": name,
+            "Relation": relation,
             "Age": age,
             "Location": location,
             "Grewup": grewup,
