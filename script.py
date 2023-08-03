@@ -37,6 +37,9 @@ def get_book_info_from_isbn(isbn_dict):
 
 def main():
 
+    # initialize Airtable
+    airtable = Airtable(base_key, table_name, api_key)
+    
     # Get the latest record
     records = airtable.get_all(maxRecords=1, sort=[('created_time', 'desc')])
     latest_record = records[0]['fields']
