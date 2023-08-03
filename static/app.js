@@ -1,4 +1,18 @@
 // app.js
+// Function to update the submit button text
+function setButtonThinking() {
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Thinking...';
+}
+
+// Function to revert the submit button text to the original
+function setButtonSubmit() {
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.disabled = false;
+  submitBtn.textContent = 'Submit';
+}
+
 document.getElementById("submitBtn").addEventListener("click", function (event) {
             event.preventDefault();
             setButtonThinking();
@@ -81,18 +95,4 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
           userInfoFormSection.style.display = "none";
 
 
-          }
-
-          // Function to update the submit button text
-          function setButtonThinking() {
-            const submitBtn = document.getElementById("submitBtn");
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Thinking...';
-          }
-
-          // Function to revert the submit button text to the original
-          function setButtonSubmit() {
-            const submitBtn = document.getElementById("submitBtn");
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Submit';
           }
