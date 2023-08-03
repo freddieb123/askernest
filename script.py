@@ -70,6 +70,7 @@ def main():
     print(books)
     books_google = get_book_info_from_isbn(books)
     print(books_google)
+    print(type(books_google))
 
     # Initialize Airtable for 'Recommendations' table
     recommendations_table = Airtable(base_key, 'Recommendations', api_key)
@@ -78,7 +79,7 @@ def main():
     books_google_str = json.dumps(books_google)
     recommendations_table.insert({'Books': books_google_str})
 
-    return books
+    return books_google
 
 if __name__ == "__main__":
     main()
