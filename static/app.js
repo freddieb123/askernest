@@ -18,6 +18,7 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
             setButtonThinking();
             const formData = {
                 name: document.getElementById("name").value,
+                relation: document.getElementById("relation").value,
                 age: document.getElementById("age").value,
                 grewup: document.getElementById("grewup").value,
                 location: document.getElementById("location").value,
