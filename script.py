@@ -1,15 +1,40 @@
 
+import os
+from airtable import Airtable
+import openai
+import re
+import isbnlib
+import requests
+
+
+# replace with your credentials
+base_key = os.environ['BASE_KEY']
+table_name = 'Draft'
+api_key = os.environ['API_KEY']
+
+def get_book_info_from_isbn(isbn_dict):
+    books_info = {}
+
+    for title, isbn in isbn_dict.items():
+        # Send request to Google Books API
+        url = f"https://www.googleapis.com/books/v1/volumes?q=isbn:{isbn}"
+        response = requests.get(url)
+        data = response.json()
+
+        if "items" in data and len(data["items"]) > 0:
+            item = data["items"][0]["volumeInfo"]
+            authors = item.get("authors", ["Author not found"])
+            thumbnail = item.get("imageLinks", {}).get("thumbnail", "")
+            books_info[title] = {
+                "authors": authors,
+                "thumbnail": thumbnail
+            }
+        else:
+            print(f"Book with ISBN {isbn} not found.")
+
+    return books_info
+
 def main():
-    import os
-    from airtable import Airtable
-    import openai
-    import re
-
-
-    # replace with your credentials
-    base_key = os.environ['BASE_KEY']
-    table_name = 'Draft'
-    api_key = os.environ['API_KEY']
 
     # initialize Airtable
     airtable = Airtable(base_key, table_name, api_key)
@@ -41,6 +66,8 @@ def main():
     )
     books = response.choices[0].message.content.strip()
     print(books)
+    books_google = get_book_info_from_isbn(books)
+    print(books_google)
 
     # Initialize Airtable for 'Recommendations' table
     recommendations_table = Airtable(base_key, 'Recommendations', api_key)
