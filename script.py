@@ -39,10 +39,12 @@ def main():
 
     # initialize Airtable
     airtable = Airtable(base_key, table_name, api_key)
-    
+
     # Get the latest record
     records = airtable.get_all(maxRecords=1, sort=[('created_time', 'desc')])
     latest_record = records[0]['fields']
+    print("latest")
+    print(latest_record)
 
     # construct the prompt
     prompt = "My uncle lives in {}. And grew up in {}. He is {} years old. And his interests are {}. And for context I would describe our relationship as {}. \n\nRecommend me 5 books based on this description that I could give him. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the author's name as the value. For example: {{\"To Kill a Mockingbird\": \"Harper Lee\", \"1984\": \"George Orwell\"}}. Remove any other text apart from the dictionary.".format(
