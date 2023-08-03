@@ -20,6 +20,7 @@ def run_script():
 def handle_form_submission():
     data = request.json
     name = data["name"]
+    relation = data["relation"]
     age = data["age"]
     grewup= data["grewup"]
     location = data["location"]
