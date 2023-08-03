@@ -75,7 +75,8 @@ def main():
     recommendations_table = Airtable(base_key, 'Recommendations', api_key)
 
     # Insert books into 'Recommendations' table
-    recommendations_table.insert({'Books': books_google})
+    books_google_str = json.dumps(books_google)
+    recommendations_table.insert({'Books': books_google_str})
 
     return books
 
