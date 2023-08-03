@@ -66,9 +66,9 @@ def main():
       ]
     )
     books = response.choices[0].message.content.strip()
+    books=json.loads(books)
     print(books)
     books_google = get_book_info_from_isbn(books)
-    books_google=json.loads(books_google)
     print(books_google)
 
     # Initialize Airtable for 'Recommendations' table
