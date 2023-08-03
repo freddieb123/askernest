@@ -40,7 +40,7 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
           const table = document.getElementById("bookTable");
           console.log(books)
           console.log(typeof books)
-          const booksobject = JSON.parse(books);
+          //const booksobject = JSON.parse(books);
 
 
 
@@ -50,13 +50,22 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
           }
 
           // Create and append new rows for each book
-          for (const [title, author] of Object.entries(booksobject)) {
-              const newRow = table.insertRow();
-              const titleCell = newRow.insertCell();
-              const authorCell = newRow.insertCell();
-              titleCell.innerText = title;
-              authorCell.innerText = author;
-              }
+          for (const [title, { author, thumbnail }] of Object.entries(books)) {
+            const newRow = table.insertRow();
+            const thumbnailCell = newRow.insertCell();
+            const titleCell = newRow.insertCell();
+            const authorCell = newRow.insertCell();
+
+            const thumbnailImage = document.createElement("img");
+            thumbnailImage.src = thumbnail;
+            thumbnailImage.alt = title;
+            thumbnailCell.appendChild(thumbnailImage);
+
+            titleCell.innerText = title;
+            authorCell.innerText = author;
+          }
+
+
           // Show the book recommendations section and hide the user info form section
           const formDataName = document.getElementById("name").value;
           const bookRecommendationsSection = document.getElementById("bookRecommendations");
