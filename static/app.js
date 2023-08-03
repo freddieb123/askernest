@@ -38,9 +38,10 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
         function updatePageContent(books) {
           // Get the table element
           const table = document.getElementById("bookTable");
+          console.log(books)
+          console.log(typeof books)
           const booksobject = JSON.parse(books);
-          console.log(booksobject)
-          console.log(typeof booksobject)
+
 
 
           // Clear existing rows (except the header)
