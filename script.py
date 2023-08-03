@@ -10,7 +10,7 @@ import json
 
 # replace with your credentials
 base_key = os.environ['BASE_KEY']
-table_name = 'Draft'
+table_name = 'Draft2'
 api_key = os.environ['API_KEY']
 
 def get_book_info_from_isbn(isbn_dict):
