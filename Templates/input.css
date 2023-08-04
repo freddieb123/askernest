@@ -1,4 +1,5 @@
 
-.formdiv{
-
+.formdiv {
+  display: flex;
+  align-items: center;
 }
