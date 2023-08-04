@@ -23,7 +23,8 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
                 grewup: document.getElementById("grewup").value,
                 location: document.getElementById("location").value,
                 interests: document.getElementById("interests").value,
-                relationship: document.getElementById("relationship").value
+                relationship: document.getElementById("relationship").value,
+                email: document.getElementById("email").value
             };
             fetch("/submitFormData", {
                 method: "POST",

@@ -7,6 +7,8 @@
 <body>
       <div id="userForm" class="formdiv">
         <h1>Get Book Recommendations for Someone</h1>
+        <p> Struggling to know which book to buy? Put in some information about the person you're buying for and Ernest will recommend up to 5 for you to choose from. </p>
+        <br><br>
           <div class="formline">
             <label for="name">Their name</label>
             <input type="text" id="name" required><br>
@@ -40,6 +42,15 @@
           <div class="formline">
             <label for="relationship">Describe your relationship with them in 3 words</label>
             <input type="text" id="relationship" required><br>
+          </div>
+          <br>
+
+          <div class="formline">
+            <div class="tooltip">
+              <label for="email">Your email</label>
+              <span class="tooltiptext">So that we can send you the recommendations for safe keeping.</span>
+            </div>
+            <input type="text" id="email" required><br>
           </div>
 
           <button type="submit" id="submitBtn">Submit</button>
