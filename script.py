@@ -47,13 +47,14 @@ def main():
     print(latest_record)
 
     # construct the prompt
-    prompt = "I am buying a book for my {}. They live in {}. And grew up in {}. They are {} years old. And their interests are {}. And for context I would describe our relationship in three words as {}. \n\nRecommend me 5 books based on this description that I could give him. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the author's name as the value. For example: {{\"To Kill a Mockingbird\": \"Harper Lee\", \"1984\": \"George Orwell\"}}. Remove any other text apart from the dictionary.".format(
+    prompt = "I am buying a book for my {}. They live in {}. And grew up in {}. They are {} years old. And their interests are {}. And for context I would describe our relationship in three words as {}. \n\nRecommend me 5 books based on this description that I could give him. Make sure all the books are {}. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the author's name as the value. For example: {{\"To Kill a Mockingbird\": \"Harper Lee\", \"1984\": \"George Orwell\"}}. Remove any other text apart from the dictionary.".format(
     latest_record['Relation'],
     latest_record['Location'],
     latest_record['Grewup'],
     latest_record['Age'],
     latest_record['Interests'],
-    latest_record['Relationship']
+    latest_record['Relationship'],
+    latest_record['Fic_Nonfic']
     )
     print(prompt)
     # Set your OpenAI key

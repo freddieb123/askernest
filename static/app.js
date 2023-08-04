@@ -24,6 +24,7 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
                 location: document.getElementById("location").value,
                 interests: document.getElementById("interests").value,
                 relationship: document.getElementById("relationship").value,
+                fic_nonfic: document.querySelector('input[name="fic_nonfic"]:checked').value,
                 email: document.getElementById("email").value
             };
             fetch("/submitFormData", {
