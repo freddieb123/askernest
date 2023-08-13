@@ -1,4 +1,17 @@
 
+body, html {
+  height: 100%;
+  position: relative;
+}
+
+#topRightImage {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1000; /* Ensuring it's above other content */
+  width: 10%; /* This sets the image width to 50% of its containing element's width */
+}
+
 .formdiv {
   margin: auto;
   width: 50%;
