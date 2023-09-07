@@ -41,7 +41,7 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
                     console.log(data.books)
                     console.log(typeof data.books)
                     updatePageContent(data.books);
-                    alert("Form data submitted successfully!");
+                    // alert("Form data submitted successfully!");
                 } else {
                     alert("Error submitting form data. Please try again later.");
                 }
