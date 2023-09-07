@@ -90,15 +90,9 @@
         </div>
 
     </div>
-    <div id="bookRecommendations" style="display: none;">
-      <h1 id="recTitle">Book Recommendations for </h1>
-      <table id="bookTable">
-          <tr>
-              <th></th>
-              <th>Title</th>
-              <th>Author</th>
-          </tr>
-      </table>
+    <div id="bookRecommendations" style="display: none;" class="formdiv">
+      <h1 id="recTitle">Book Recommendations for</h1>
+      <div id="booksContainer"></div>
     </div>
 
     <script src="{{ url_for('static', filename='app.js') }}"></script>

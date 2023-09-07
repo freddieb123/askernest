@@ -56,36 +56,43 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
         });
 
         // Function to update the page content dynamically
-        function updatePageContent(books) {
-          // Get the table element
-          const table = document.getElementById("bookTable");
-          console.log(books)
-          console.log(typeof books)
-          //const booksobject = JSON.parse(books);
+  function updatePageContent(books) {
+      // Get the container for the books
+      const booksContainer = document.getElementById("booksContainer");
 
+      // Clear existing book items
+      booksContainer.innerHTML = '';
 
+      // Create and append new divs for each book
+      for (const [title, { authors, thumbnail, amazonLink }] of Object.entries(books)) {
+          const bookItem = document.createElement("div");
+          bookItem.className = "bookItem";
 
-          // Clear existing rows (except the header)
-          while (table.rows.length > 1) {
-            table.deleteRow(1);
-          }
+          const bookLink = document.createElement("a");
+          bookLink.href = amazonLink;
+          bookLink.target = "_blank";  // Opens the link in a new tab
 
-          // Create and append new rows for each book
-          for (const [title, { authors, thumbnail }] of Object.entries(books)) {
-            const newRow = table.insertRow();
-            const thumbnailCell = newRow.insertCell();
-            const titleCell = newRow.insertCell();
-            const authorCell = newRow.insertCell();
+          const thumbnailImage = document.createElement("img");
+          thumbnailImage.src = thumbnail;
+          thumbnailImage.alt = title;
+          thumbnailImage.className = "bookCover";
 
-            const thumbnailImage = document.createElement("img");
-            thumbnailImage.src = thumbnail;
-            thumbnailImage.alt = title;
-            thumbnailCell.appendChild(thumbnailImage);
+          bookLink.appendChild(thumbnailImage);  // Append the image to the link
+          bookItem.appendChild(bookLink);  // Append the link to the book item
 
-            titleCell.innerText = title;
-            authorCell.innerText = authors;
-          }
+          const bookTitle = document.createElement("div");
+          bookTitle.innerText = title;
+          bookTitle.className = "bookTitle";
 
+          const bookAuthor = document.createElement("div");
+          bookAuthor.innerText = authors;
+          bookAuthor.className = "bookAuthor";
+
+          bookItem.appendChild(bookTitle);
+          bookItem.appendChild(bookAuthor);
+
+          booksContainer.appendChild(bookItem);
+      }
 
           // Show the book recommendations section and hide the user info form section
           const formDataName = document.getElementById("name").value;
@@ -96,6 +103,4 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
           recTitleElement.innerText = `Book Recommendations for ${formDataName}`;
           bookRecommendationsSection.style.display = "block";
           userInfoFormSection.style.display = "none";
-
-
-          }
+      }

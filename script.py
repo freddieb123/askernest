@@ -15,8 +15,14 @@ api_key = os.environ['API_KEY']
 
 def get_book_info_from_isbn(isbn_dict):
     books_info = {}
+    print(isbn_dict)
 
-    for title, isbn in isbn_dict.items():
+
+    for title, info in isbn_dict.items():
+        author, isbn = info
+
+        amazon_link = f"https://www.amazon.co.uk/s?k={title}+{author}"
+
         # Send request to Google Books API
         url = f"https://www.googleapis.com/books/v1/volumes?q=intitle:{title}"
         response = requests.get(url)
@@ -28,10 +34,11 @@ def get_book_info_from_isbn(isbn_dict):
             thumbnail = item.get("imageLinks", {}).get("thumbnail", "")
             books_info[title] = {
                 "authors": authors,
-                "thumbnail": thumbnail
+                "thumbnail": thumbnail,
+                "amazonLink": amazon_link  # Add the Amazon link to the data
             }
         else:
-            print(f"Book with ISBN {isbn} not found.")
+            print(f"Book by {author} not found.")
 
     return books_info
 
@@ -47,16 +54,15 @@ def main():
     print(latest_record)
 
     # construct the prompt
-    prompt = "I am buying a book for my {}. They live in {}. And grew up in {}. They are {} years old. And their interests are {}. And for context I would describe our relationship in three words as {}. \n\nRecommend me 5 books based on this description that I could give him. Make sure all the books are {}. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and the author's name as the value. For example: {{\"To Kill a Mockingbird\": \"Harper Lee\", \"1984\": \"George Orwell\"}}. Remove any other text apart from the dictionary.".format(
+    prompt = "I am buying a book for my {}. They live in {}. And grew up in {}. They are {} years old. And their interests are {}. And for context I would describe our relationship in three words as {}. \n\nRecommend me 5 books based on this description that I could give him. Make sure all the books are {}. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and a list containing the author's name and the ISBN number as the value. For example: {{\"To Kill a Mockingbird\": [\"Harper Lee\", \"978-0099549482\"], \"1984\": [\"George Orwell\", \"978-1846975769\"]}}. Remove any other text apart from the dictionary.".format(
     latest_record['Relation'],
     latest_record['Location'],
     latest_record['Grewup'],
     latest_record['Age'],
     latest_record['Interests'],
     latest_record['Relationship'],
-    latest_record['Fic_Nonfic']
-    )
-    print(prompt)
+    latest_record['Fic_Nonfic'])
+
     # Set your OpenAI key
     openai.api_key = os.environ['OPENAI_KEY']
 

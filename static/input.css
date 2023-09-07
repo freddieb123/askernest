@@ -89,3 +89,33 @@ input[type=text]:focus {
   visibility: visible;
   opacity: 1;
 }
+
+/* Styling for the book recommendations container */
+.recs {
+    width: 80%;
+    margin: auto; /* Centers the container */
+    text-align: center;
+    padding: 30px;
+
+}
+
+#booksContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center; /* Centers the book items */
+    gap: 20px;
+}
+
+.bookItem {
+    width: 150px;
+    margin: 20px auto; /* Vertically space out book items and auto-center */
+}
+
+.bookCover {
+    width: 100%;
+    height: auto;
+}
+
+.bookTitle, .bookAuthor {
+    margin-top: 10px;
+}
