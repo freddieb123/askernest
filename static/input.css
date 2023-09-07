@@ -19,6 +19,14 @@ body, html {
   padding: 30px;
 }
 
+.question {
+    display: none;
+}
+
+.nextBtn {
+    margin-top: 10px;
+}
+
 .formline {
   padding-bottom: 10px;
 }
@@ -45,7 +53,7 @@ input[type=text]:focus {
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
+  width: 180%;
   background-color: #555;
   color: #fff;
   text-align: center;

@@ -11,60 +11,84 @@
         <h1>Get Book Recommendations</h1>
         <p> Struggling to know which book to buy? Put in some information about the person you're buying for and Ernest will recommend up to 5 for you to choose from. </p>
         <br><br>
-          <div class="formline">
-            <label for="name">Their name:</label>
-            <input type="text" id="name" class="input" required><br>
+          <div class="question">
+            <div class="formline">
+                <label for="name">Their name</label><br>
+                <input type="text" id="name" class="input" required><br>
+            </div>
+            <button class="nextBtn">Next</button>
           </div>
 
-          <div class="formline">
-            <label for="relation">Their relationship to you:</label>
-            <input type="text" id="relation" class="input" required><br>
+          <div class="question">
+            <div class="formline">
+                <label for="relation">Their relationship to you</label><br>
+                <input type="text" id="relation" class="input" required><br>
+            </div>
+            <button class="nextBtn">Next</button>
           </div>
 
-          <div class="formline">
-            <label for="age">Their age:</label>
-            <input type="text" id="age" class="input" required><br>
+          <div class="question">
+            <div class="formline">
+              <label for="age">Their age</label><br>
+              <input type="text" id="age" class="input" required><br>
+            </div>
+            <button class="nextBtn">Next</button>
           </div>
 
-          <div class="formline">
-            <label for="location">Where they live now:</label>
-            <input type="text" id="location" class="input" required><br>
+          <div class="question">
+            <div class="formline">
+              <label for="location">Where they live now</label><br>
+              <input type="text" id="location" class="input" required><br>
+            </div>
+            <button class="nextBtn">Next</button>
           </div>
 
-          <div class="formline">
-            <label for="grewup">Where they grew up:</label>
-            <input type="text" id="grewup" class="input" required><br>
+          <div class="question">
+            <div class="formline">
+              <label for="grewup">Where they grew up</label><br>
+              <input type="text" id="grewup" class="input" required><br>
+            </div>
+            <button class="nextBtn">Next</button>
           </div>
 
-          <div class="formline">
-            <label for="interests">Their interests:</label>
-            <input type="text" id="interests" class="input" required><br>
+          <div class="question">
+            <div class="formline">
+              <label for="interests">Their interests</label><br>
+              <input type="text" id="interests" class="input" required><br>
+            </div>
+            <button class="nextBtn">Next</button>
           </div>
 
-          <div class="formline">
-            <label for="relationship">Describe your relationship with them in 3 words:</label>
-            <input type="text" id="relationship" class="input" required><br>
+          <div class="question">
+            <div class="formline">
+              <label for="relationship">Describe your relationship with them in 3 words</label><br>
+              <input type="text" id="relationship" class="input" required><br>
+            </div>
+            <button class="nextBtn">Next</button>
           </div>
-          <br>
 
-          <div class="formline">
-            <p>Do you want to buy them a fiction or non-fiction book?</p>
-            <input type="radio" id="fiction" name="fic_nonfic" value="fiction">
-            <label for="fiction">Fiction</label><br>
-            <input type="radio" id="non_fiction" name="fic_nonfic" value="non_fiction">
-            <label for="non_fiction">Non-Fiction</label><br>
+          <div class="question">
+            <div class="formline">
+              <p>Do you want to buy them a fiction or non-fiction book?</p>
+              <input type="radio" id="fiction" name="fic_nonfic" value="fiction" class="input">
+              <label for="fiction">Fiction</label><br>
+              <input type="radio" id="non_fiction" name="fic_nonfic" value="non_fiction" class="input">
+              <label for="non_fiction">Non-Fiction</label><br>
+            </div>
+            <button class="nextBtn">Next</button>
           </div>
-          <br>
 
+          <div class="question">
           <div class="formline">
             <div class="tooltip">
-              <label for="email">Your email</label>
+              <label for="email">Your email</label><br>
               <span class="tooltiptext">So that we can send you the recommendations for safe keeping.</span>
             </div>
             <input type="text" id="email" class="input" required><br>
           </div>
-
           <button type="submit" id="submitBtn">Submit</button>
+        </div>
+
     </div>
     <div id="bookRecommendations" style="display: none;">
       <h1 id="recTitle">Book Recommendations for </h1>
@@ -78,5 +102,6 @@
     </div>
 
     <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <script src="{{ url_for('static', filename='questions.js') }}"></script>
 </body>
 </html>
