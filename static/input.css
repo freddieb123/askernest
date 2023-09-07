@@ -2,6 +2,7 @@
 body, html {
   height: 100%;
   position: relative;
+  font-family: 'Cutive Mono', monospace;  /* Set the typewriter font here */
 }
 
 #topRightImage {
@@ -23,10 +24,11 @@ body, html {
 }
 
 .input {
-  width: 50%;
-  margin: 8px 0;
+  width: 20%;
+  text-align: left; /* Ensures the content within is left-aligned */
+  margin: 2px 0;
   box-sizing: border-box;
-  border-radius: 20px;
+  border-radius: 6px;
 }
 
 input[type=text]:focus {
