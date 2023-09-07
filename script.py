@@ -42,7 +42,7 @@ def get_book_info_from_isbn(isbn_dict):
 
     return books_info
 
-def main():
+def main(recommendationType):
 
     # initialize Airtable
     airtable = Airtable(base_key, table_name, api_key)
@@ -54,15 +54,26 @@ def main():
     print(latest_record)
 
     # construct the prompt
-    prompt = "I am buying a book for my {}. They live in {}. And grew up in {}. They are {} years old. And their interests are {}. And for context I would describe our relationship in three words as {}. \n\nRecommend me 5 books based on this description that I could give him. Make sure all the books are {}. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and a list containing the author's name and the ISBN number as the value. For example: {{\"To Kill a Mockingbird\": [\"Harper Lee\", \"978-0099549482\"], \"1984\": [\"George Orwell\", \"978-1846975769\"]}}. Remove any other text apart from the dictionary.".format(
-    latest_record['Relation'],
-    latest_record['Location'],
-    latest_record['Grewup'],
-    latest_record['Age'],
-    latest_record['Interests'],
-    latest_record['Relationship'],
-    latest_record['Fic_Nonfic'])
+    if recommendationType == "forYourself":
+        prompt = "I am buying a book for myself. I live in {}. And I grew up in {}. I am {} years old. And my interests are {}. I would describe myself in three words as {}. \n\nRecommend me 5 books based on this description. Make sure all the books are {}. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and a list containing the author's name and the ISBN number as the value. For example: {{\"To Kill a Mockingbird\": [\"Harper Lee\", \"978-0099549482\"], \"1984\": [\"George Orwell\", \"978-1846975769\"]}}. Remove any other text apart from the dictionary.".format(
+        latest_record['Location'],
+        latest_record['Grewup'],
+        latest_record['Age'],
+        latest_record['Interests'],
+        latest_record['Relationship'],
+        latest_record['Fic_Nonfic'])
+    # Customize the rest of the prompt for oneself
+    else:
+        prompt = "I am buying a book for my {}. They live in {}. And grew up in {}. They are {} years old. And their interests are {}. And for context I would describe our relationship in three words as {}. \n\nRecommend me 5 books based on this description that I could give him. Make sure all the books are {}. Make sure the recommendations aren't really obvious. Please provide your recommendations as a Python dictionary, with the book title as the key and a list containing the author's name and the ISBN number as the value. For example: {{\"To Kill a Mockingbird\": [\"Harper Lee\", \"978-0099549482\"], \"1984\": [\"George Orwell\", \"978-1846975769\"]}}. Remove any other text apart from the dictionary.".format(
+        latest_record['Relation'],
+        latest_record['Location'],
+        latest_record['Grewup'],
+        latest_record['Age'],
+        latest_record['Interests'],
+        latest_record['Relationship'],
+        latest_record['Fic_Nonfic'])
 
+    print(prompt)
     # Set your OpenAI key
     openai.api_key = os.environ['OPENAI_KEY']
 

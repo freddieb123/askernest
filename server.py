@@ -11,14 +11,16 @@ app.debug = True
 logging.basicConfig(level=logging.INFO)
 
 
-def run_script():
+def run_script(recommendationType):
     #with app.app_context():
-    books = script.main()
+    books = script.main(recommendationType)
     return books
 
 @app.route("/submitFormData", methods=["POST"])
 def handle_form_submission():
     data = request.json
+    recommendationType = data["recommendationType"]
+
     name = data["name"]
     relation = data["relation"]
     age = data["age"]
@@ -28,10 +30,10 @@ def handle_form_submission():
     relationship = data["relationship"]
     fic_nonfic = data["fic_nonfic"]
     email = data["email"]
-    print (data)
+
 
     if submit_form_data(name, relation, age, grewup, location, interests, relationship, fic_nonfic, email):
-        books = run_script()
+        books = run_script(recommendationType)
         g.books = books  # Set the books variable in the g context
         return jsonify({"message": "Data inserted successfully", "books": books}), 200
     else:

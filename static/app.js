@@ -1,4 +1,34 @@
 // app.js
+
+// Add these at the beginning of your JavaScript
+let recommendationType = null;
+
+document.getElementById("forYourself").addEventListener("click", function() {
+    recommendationType = "forYourself";
+    document.getElementById("selectionButtons").style.display = "none";
+    document.getElementById("questionsSection").style.display = "block";
+    setQuestionLabelsForYourself(); // Update labels for "For Yourself"
+    // Update your questions or prompts accordingly
+});
+
+document.getElementById("forSomeoneElse").addEventListener("click", function() {
+    recommendationType = "forSomeoneElse";
+    document.getElementById("selectionButtons").style.display = "none";
+    document.getElementById("questionsSection").style.display = "block";
+    // Update your questions or prompts accordingly
+});
+
+function setQuestionLabelsForYourself() {
+    document.querySelector("label[for='name']").innerText = "Your name";
+    const relationQuestionDiv = document.getElementById("relation").closest(".question");
+    relationQuestionDiv.style.display = "none";  // Hide the relationship question div
+    document.querySelector("label[for='age']").innerText = "Your age";
+    document.querySelector("label[for='location']").innerText = "Where you live now";
+    document.querySelector("label[for='grewup']").innerText = "Where you grew up";
+    document.querySelector("label[for='interests']").innerText = "Your interests";
+    document.querySelector("label[for='relationship']").innerText = "Describe yourself in three words";
+}
+
 // Function to update the submit button text
 function setButtonThinking() {
   const submitBtn = document.getElementById("submitBtn");
@@ -16,16 +46,24 @@ function setButtonSubmit() {
 document.getElementById("submitBtn").addEventListener("click", function (event) {
             event.preventDefault();
             setButtonThinking();
+
+            // Check if 'relation' has no value and set it to null
+            const relationInput = document.getElementById("relation");
+            if (!relationInput.value.trim()) {
+                relationInput.value = null;
+            }
+
             const formData = {
                 name: document.getElementById("name").value,
-                relation: document.getElementById("relation").value,
+                relation: relationInput.value, // Use the potentially modified value
                 age: document.getElementById("age").value,
                 grewup: document.getElementById("grewup").value,
                 location: document.getElementById("location").value,
                 interests: document.getElementById("interests").value,
                 relationship: document.getElementById("relationship").value,
                 fic_nonfic: document.querySelector('input[name="fic_nonfic"]:checked').value,
-                email: document.getElementById("email").value
+                email: document.getElementById("email").value,
+                recommendationType: recommendationType
             };
             fetch("/submitFormData", {
                 method: "POST",

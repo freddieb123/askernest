@@ -34,6 +34,11 @@ function showNextQuestion() {
     questions[currentIndex].style.display = 'none';
     currentIndex++;
 
+    // If the next question is hidden (like the relation question for 'For Yourself'), skip it
+    while (currentIndex < questions.length && questions[currentIndex].style.display === 'none') {
+        currentIndex++;
+    }
+
     // Update progress bar
     let progress = (currentIndex / questions.length) * 100;
     document.querySelector('.progress-bar').style.width = progress + '%';
