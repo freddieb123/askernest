@@ -1,9 +1,14 @@
 // app.js
-
+mixpanel.init('3c8397c8002be01c409ce45adf534043', {track_pageview: true, persistence: 'localStorage'});
 // Add these at the beginning of your JavaScript
 let recommendationType = null;
 
 document.getElementById("forYourself").addEventListener("click", function() {
+  // track user selection of recommendation type
+    mixpanel.track('Recommendation Type', {
+    'Recommendation Type': 'For yourself'
+    })
+
     recommendationType = "forYourself";
     document.getElementById("selectionButtons").style.display = "none";
     document.getElementById("questionsSection").style.display = "block";
@@ -12,6 +17,11 @@ document.getElementById("forYourself").addEventListener("click", function() {
 });
 
 document.getElementById("forSomeoneElse").addEventListener("click", function() {
+  // track user selection of recommendation type
+    mixpanel.track('Recommendation Type', {
+    'Recommendation Type': 'For someone else'
+    })
+
     recommendationType = "forSomeoneElse";
     document.getElementById("selectionButtons").style.display = "none";
     document.getElementById("questionsSection").style.display = "block";
@@ -32,6 +42,9 @@ function setQuestionLabelsForYourself() {
 // Function to update the submit button text
 function setButtonThinking() {
   const submitBtn = document.getElementById("submitBtn");
+  // track the submit click
+  mixpanel.track('Answers submitted', {
+  })
   submitBtn.disabled = true;
   submitBtn.textContent = 'Thinking...';
 }
@@ -109,6 +122,14 @@ document.getElementById("submitBtn").addEventListener("click", function (event) 
           const bookLink = document.createElement("a");
           bookLink.href = amazonLink;
           bookLink.target = "_blank";  // Opens the link in a new tab
+
+          // Add Mixpanel tracking for book click
+          bookLink.addEventListener('click', function() {
+            mixpanel.track('Book Clicked', {
+                'Book Title': title,
+                'Book Author': authors
+            });
+          });
 
           const thumbnailImage = document.createElement("img");
           thumbnailImage.src = thumbnail;

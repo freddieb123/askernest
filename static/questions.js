@@ -30,6 +30,17 @@ questions.forEach((question, index) => {
 });
 
 function showNextQuestion() {
+      // Get the current question and input value
+      let currentQuestion = questions[currentIndex];
+      let inputValue = currentQuestion.querySelector('.input').value;
+
+      // Track the event with Mixpanel
+      mixpanel.track('Next Question Clicked', {
+          'Question Number': currentIndex + 1, // +1 because index is 0-based
+          'Input Value': inputValue
+      });
+
+
     // Hide the current question
     questions[currentIndex].style.display = 'none';
     currentIndex++;
