@@ -15,6 +15,7 @@ questions[currentIndex].style.display = 'block';
 questions.forEach((question, index) => {
     let input = question.querySelector('.input');
     let nextBtn = question.querySelector('.nextBtn');
+    let backBtn = question.querySelector('.backBtn');
 
     // Handle the "Enter" key within the input
     input.addEventListener('keyup', function(event) {
@@ -26,6 +27,9 @@ questions.forEach((question, index) => {
     // Handle the "Next" button click
     if (nextBtn) {
         nextBtn.addEventListener('click', showNextQuestion);
+    }
+    if (backBtn) {
+        backBtn.addEventListener("click", showPreviousQuestion);
     }
 });
 
@@ -64,6 +68,9 @@ function showNextQuestion() {
     if (currentIndex < questions.length) {
         questions[currentIndex].style.display = 'block';
     }
+    updateBackButtonVisibility();
+
+
 }
 
 // Function to show the previous question
@@ -72,6 +79,23 @@ function showPreviousQuestion() {
         questions[currentIndex].style.display = 'none';
         currentIndex--;
         questions[currentIndex].style.display = 'block';
-        updateProgressBar();
+        // Update progress bar
+        let progress = (currentIndex / questions.length) * 100;
+        document.querySelector('.progress-bar').style.width = progress + '%';
+
+        if (currentIndex <= questions.length) {
+            document.querySelector('.progress-bar').innerText = `${currentIndex}/${questions.length}`;
+        } else {
+            document.querySelector('.progress-bar').innerText = 'Completed!';
+        }
+        updateBackButtonVisibility();
+
+    }
+}
+
+function updateBackButtonVisibility() {
+    const backBtn = document.querySelector('.backBtn');
+    if (backBtn) {
+        backBtn.style.display = currentIndex === 0 ? 'none' : 'block';
     }
 }
