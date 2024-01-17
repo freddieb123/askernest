@@ -1,8 +1,10 @@
 
-body, html {
+html, body {
   height: 100%;
-  position: relative;
-  font-family: 'Cutive Mono', monospace;  /* Set the typewriter font here */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #topRightImage {
@@ -13,18 +15,33 @@ body, html {
   width: 10%; /* This sets the image width to 50% of its containing element's width */
 }
 
-.formdiv {
+#userForm {
+  width: 100%;
+  max-width: 600px;
   margin: auto;
-  width: 50%;
-  padding: 30px;
+  padding: 80px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background-color: #ffffff;
 }
+
 
 .question {
     display: none;
+    margin-bottom: 20px;
 }
 
-.nextBtn {
-    margin-top: 10px;
+.nextBtn, .backBtn, #forYourself, #forSomeoneElse, #submitBtn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.nextBtn:hover, .backBtn:hover, #forYourself:hover, #forSomeoneElse:hover, {
+  background-color: #0056b3;
 }
 
 .formline {
@@ -128,10 +145,18 @@ input[type=text]:focus {
 }
 
 .progress-bar {
-    width: 0%;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    color: white;
-    background-color: #4CAF50;
+  height: 20px;
+  width: 0;
+  background-color: #007bff;
+  border-radius: 5px;
+  transition: width 0.4s ease;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+}
+
+@media (max-width: 768px) {
+  #userForm {
+    width: 90%;
+  }
 }

@@ -65,3 +65,13 @@ function showNextQuestion() {
         questions[currentIndex].style.display = 'block';
     }
 }
+
+// Function to show the previous question
+function showPreviousQuestion() {
+    if (currentIndex > 0) {
+        questions[currentIndex].style.display = 'none';
+        currentIndex--;
+        questions[currentIndex].style.display = 'block';
+        updateProgressBar();
+    }
+}
