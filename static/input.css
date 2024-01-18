@@ -1,10 +1,18 @@
 
 html, body {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  background-color: #fff;
   height: 100%;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
 }
 
 #topRightImage {
@@ -15,14 +23,15 @@ html, body {
   width: 10%; /* This sets the image width to 50% of its containing element's width */
 }
 
+
 #userForm {
   width: 100%;
   max-width: 600px;
+  background-color: #F0F0F0;
   margin: auto;
   padding: 80px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  background-color: #ffffff;
 }
 
 
@@ -31,17 +40,43 @@ html, body {
     margin-bottom: 20px;
 }
 
-.nextBtn, .backBtn, #forYourself, #forSomeoneElse, #submitBtn {
+#selectionButtons {
+    display: flex;
+    justify-content: flex-start;; /* Centers items horizontally in the container */
+    align-items: baseline;; /* Centers items vertically in the container */
+    flex-direction: row; /* Stack the buttons vertically */
+    gap: 10px; /* Optional: adds space between buttons */
+}
+
+.customBtn {
+    background-color: #007bff; /* Vibrant blue */
+    color: white;
+    border: none;
+    border-radius: 25px; /* Rounded corners */
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 20vw;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    animation: scalePop 0.5s ease-out 2s; /* Apply the animation with delay */
+    animation-delay: 2s; /* New delay */
+}
+
+.customBtn:hover, .nextBtn:hover, .backBtn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly increase the size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Shadow effect */
+}
+
+.nextBtn, .backBtn, #submitBtn {
   padding: 10px 20px;
+  text-align: right;
   background-color: #007bff;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-}
-.nextBtn:hover, .backBtn:hover, #forYourself:hover, #forSomeoneElse:hover, {
-  background-color: #0056b3;
 }
 
 .formline {
@@ -159,4 +194,46 @@ input[type=text]:focus {
   #userForm {
     width: 90%;
   }
+}
+
+@keyframes flyInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(1.1); /* Start slightly larger */
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1); /* Animate to normal size */
+        opacity: 1;
+    }
+}
+
+@keyframes scalePop {
+    0% {
+        transform: scale(1); /* Normal size */
+    }
+    50% {
+        transform: scale(1.1); /* Enlarge to 110% */
+    }
+    100% {
+        transform: scale(1); /* Return to normal size */
+    }
+}
+
+#userForm h1 {
+    animation: flyInFromRight 1s ease-out;
+}
+
+#userForm p {
+    animation: popIn 2s ease-out;
 }
