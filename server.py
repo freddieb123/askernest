@@ -4,7 +4,11 @@ import threading
 import logging
 import results
 from airtable_utils import submit_form_data
+from dotenv import load_dotenv
 
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__, template_folder='Templates')
 app.debug = True

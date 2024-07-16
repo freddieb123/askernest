@@ -6,12 +6,17 @@ import re
 import isbnlib
 import requests
 import json
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # replace with your credentials
 base_key = os.environ['BASE_KEY']
 table_name = 'Draft2'
 api_key = os.environ['API_KEY']
+AIRTABLE_ACCESS_TOKEN = os.getenv('AIRTABLE_ACCESS_TOKEN')
+AIRTABLE_BASE_ID = os.getenv('AIRTABLE_BASE_ID')
+TABLE_NAME = 'Draft2'
 
 def get_book_info_from_isbn(isbn_dict):
     books_info = {}
@@ -43,12 +48,20 @@ def get_book_info_from_isbn(isbn_dict):
     return books_info
 
 def main(recommendationType):
+     # Construct headers for Airtable API requests
+    headers = {
+        'Authorization': f'Bearer {AIRTABLE_ACCESS_TOKEN}',
+        'Content-Type': 'application/json'
+    }
 
     # initialize Airtable
     airtable = Airtable(base_key, table_name, api_key)
 
-    # Get the latest record
-    records = airtable.get_all(maxRecords=1, sort=[('created_time', 'desc')])
+     # Get the latest record from Airtable
+    url = f'https://api.airtable.com/v0/{AIRTABLE_BASE_ID}/{TABLE_NAME}?maxRecords=1&sort[0][field]=created_time&sort[0][direction]=desc'
+    response = requests.get(url, headers=headers)
+    response.raise_for_status()
+    records = response.json().get('records')
     latest_record = records[0]['fields']
     print("latest")
     print(latest_record)
@@ -92,12 +105,18 @@ def main(recommendationType):
     print(books_google)
     print(type(books_google))
 
-    # Initialize Airtable for 'Recommendations' table
-    recommendations_table = Airtable(base_key, 'Recommendations', api_key)
-
-    # Insert books into 'Recommendations' table
+     # Insert books into 'Recommendations' table in Airtable
+    recommendations_table = 'Recommendations'
+    recommendations_url = f'https://api.airtable.com/v0/{AIRTABLE_BASE_ID}/{recommendations_table}'
     books_google_str = json.dumps(books_google)
-    recommendations_table.insert({'Books': books_google_str})
+    data = {
+        'fields': {
+            'Books': books_google_str
+        }
+    }
+    response = requests.post(recommendations_url, headers=headers, json=data)
+    response.raise_for_status()
+    print("Books inserted successfully into Recommendations table")
 
     return books_google
 
